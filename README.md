@@ -7,4 +7,4 @@ For this project, I used `Python 3`, my favourite language. In addition, I used 
 - [Tensorflow](https://www.tensorflow.org/) for building the machine learing model.
 - [Matplotlib](https://matplotlib.org/) for visualizing and analysing data.
 ## Example
-![example screenshot](https://github.com/carlojacobs/titanic/example_screenshot.PNG)
+![example screenshot](https://github.com/carlojacobs/titanic/example_screenshot.png)
