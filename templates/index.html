@@ -8,7 +8,7 @@
 	<div class="container mt-5 mb-5">
 		<h1>Would you survive disaster?</h1>
 		<h2>Do you have what it takes to make it out alive?</h2>
-		<div style="width:100%;height:0;padding-bottom:58%;position:relative;"><iframe src="https://giphy.com/embed/Uj3SeuVfg2oCs" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/titanic-Uj3SeuVfg2oCs">via GIPHY</a></p>
+		<div style="width:80%;height:0;padding-bottom:58%;position:relative;"><iframe src="https://giphy.com/embed/Uj3SeuVfg2oCs" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/titanic-Uj3SeuVfg2oCs">via GIPHY</a></p>
 		<h2>Fill in the form and find out!</h2>
 		<form action="http://127.0.0.1:5000/predict" method="POST">
 		  <div class="form-group">
@@ -39,8 +39,10 @@
 				<input type="radio" name="embarked" value="2"> Queenstown
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputPassword1">Yearly income (euros)</label>
-		    <input name="income" type="number" class="form-control" id="exampleInputPassword1" placeholder="Income">
+		    <label for="exampleInputPassword1">Class</label> <br>
+		    <input type="radio" name="class" value="1"> 1st ($30 000)<br>
+				<input type="radio" name="class" value="2"> 2nd ($1000)<br>
+				<input type="radio" name="class" value="3"> 3rd ($500)
 		  </div>
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		</form>
