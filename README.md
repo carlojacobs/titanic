@@ -7,4 +7,5 @@ For this project, I used `Python3`, my favourite language. In addition, I used s
 - [Tensorflow](https://www.tensorflow.org/) for building the machine learing model.
 - [Matplotlib](https://matplotlib.org/) for visualizing and analysing data.
 ## Example
+This is an example of the website.
 ![example screenshot](example_screenshot.png)
