@@ -23,20 +23,21 @@ def make_prediction(data):
 
 
 def validate_from(form_data):
+	keys = []
 	for key, value in form_data.items():
 		if form_data[key] == '':
-			return False
-	return True
+			keys.append(key)
+	return keys
 
 def prepare_form_data(form_data):
 	final_data = []
 	pclass = form_data["class"]
 	ticket = 0
-	if pclass == 1:
+	if pclass == 0:
 		ticket = 60
-	elif pclass == 2:
+	elif pclass == 1:
 		ticket = 40
-	elif pclass == 3:
+	elif pclass == 2:
 		ticket = 7
 
 	final_data.append(pclass)
@@ -53,7 +54,13 @@ def prepare_form_data(form_data):
 
 @app.route("/")
 def index():
-  return render_template("index.html")
+  return render_template("index2.html", nameIsvalid=True, ageIsvalid=True, genderIsvalid=True, sibsIsvalid=True, parsIsvalid=True, embarkedIsvalid=True, classIsvalid=True)
+
+def is_item_in_list(list, item):
+	if item in list:
+		return False
+	else:
+		return True
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -64,9 +71,22 @@ def predict():
 	# Get formdata
 	form_data = dict(request.form)
 
+	print("FORMDATA: ", form_data)
+
 	# Validate form
-	if not validate_from(form_data):
-		return "<h1>Oops! You didn't fill in the entire form!</h1>"
+	validation_keys = validate_from(form_data)
+	print("VALKEYS: ", validation_keys)
+	if len(validation_keys) > 0:
+		nameIsvalid = is_item_in_list(validation_keys, 'name')
+		ageIsvalid = is_item_in_list(validation_keys, 'age')
+		genderIsvalid = is_item_in_list(validation_keys, 'gender')
+		sibsIsvalid = is_item_in_list(validation_keys, 'sibs')
+		parsIsvalid = is_item_in_list(validation_keys, 'pars')
+		embarkedIsvalid = is_item_in_list(validation_keys, 'embarked')
+		classIsvalid = is_item_in_list(validation_keys, 'class')
+		return render_template("index2.html", nameIsvalid=nameIsvalid, ageIsvalid=ageIsvalid, genderIsvalid=genderIsvalid, sibsIsvalid=sibsIsvalid, parsIsvalid=parsIsvalid, embarkedIsvalid=embarkedIsvalid, classIsvalid=classIsvalid)
+
+	print("FORMDATA", form_data)
 
 	data = prepare_form_data(form_data)
 	prediction = make_prediction(data)[0][0]
@@ -97,7 +117,7 @@ def predict():
 		status = "sad"
 		sad = True
 
-	return render_template("result.html", result=result, color=color, message=message, good=good, meh=meh, sad=sad)
+	return render_template("result2.html", result=result, color=color, message=message, good=good, meh=meh, sad=sad)
 
 if __name__ == "__main__":
 	app.run(debug=True)
