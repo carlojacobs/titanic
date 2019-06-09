@@ -34,14 +34,6 @@
 	      </div>
 	    </div>
 	  </section>
-	  <footer class="footer result-footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong>Titanic Predictor</strong> by <a href="https:carlo-jacobs.com">Carlo Jacobs</a>. The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-        </p>
-      </div>
-    </footer>
   </div>
 </template>
 
@@ -56,11 +48,3 @@
 		}
 	}
 </script>
-
-<style>
-  .result-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-</style>
