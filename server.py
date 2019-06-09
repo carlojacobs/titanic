@@ -1,14 +1,16 @@
 # Titanic prediction app
 import tensorflow as tf # Machine learning
-from tensorflow import keras # Machine learing
+from tensorflow.python import keras # Machine learing
 from flask import Flask, render_template, request
 import numpy as np
 app = Flask(__name__)
 
+print(tf.__version__)
+
 # Loading the model
 loaded_model = keras.models.load_model("94_model.h5")
 
-graph = tf.get_default_graph()
+graph = tf.compat.v1.get_default_graph()
 
 def make_prediction(data):
 
