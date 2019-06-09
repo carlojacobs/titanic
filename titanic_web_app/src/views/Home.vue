@@ -104,7 +104,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-          <strong>Titanic Predictor</strong> by <a href="https:carlo-jacobs.com">Carlo Jacobs</a>. The source code is licensed
+          <strong>Titanic Predictor</strong> by <a href="https://carlo-jacobs.com">Carlo Jacobs</a>. The source code is licensed
           <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
         </p>
       </div>
@@ -118,7 +118,7 @@ import * as tf from '@tensorflow/tfjs';
 
 let model;
 (async function() {
-  model = await tf.loadLayersModel('http://carlo-jacobs.com/titanic/94_js_model/model.json');
+  model = await tf.loadLayersModel('https://carlo-jacobs.com/titanic/94_js_model/model.json');
 })();
 
 /*
