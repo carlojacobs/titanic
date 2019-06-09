@@ -118,7 +118,7 @@ import * as tf from '@tensorflow/tfjs';
 
 let model;
 (async function() {
-  model = await tf.loadLayersModel('http://localhost:8080/94_js_model/model.json');
+  model = await tf.loadLayersModel('http://carlo-jacobs.com/titanic/94_js_model/model.json');
 })();
 
 /*
