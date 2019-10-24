@@ -90,6 +90,10 @@
             </form>
           </div>
           <div class="column">
+            <h4 class="title is-4">What is this?</h4>
+            <div class="content">
+              <p>I developed this site using machine learning and <a href="https://www.kaggle.com/c/titanic">this</a> data set. It can accurately predict <i>your</i> hypothetical chance of surviving the titanic.</p>
+            </div>
             <h4 class="title is-4">What Happened?</h4>
             <div class="content">
               <p>RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in 1912, after colliding with an iceberg during her maiden voyage from Southampton to New York City. Of the estimated 2,224 passengers and crew aboard, more than 1,500 died, making it one of modern history's deadliest commercial marine disasters during peacetime. RMS Titanic was the largest ship afloat at the time she entered service and was the second of three Olympic-class ocean liners operated by the White Star Line. She was built by the Harland and Wolff shipyard in Belfast. Thomas Andrews, chief naval architect of the shipyard at the time, died in the disaster</p>
