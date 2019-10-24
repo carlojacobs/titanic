@@ -56,7 +56,7 @@ def prepare_form_data(form_data):
 
 @app.route("/")
 def index():
-  return render_template("index2.html", nameIsvalid=True, ageIsvalid=True, genderIsvalid=True, sibsIsvalid=True, parsIsvalid=True, embarkedIsvalid=True, classIsvalid=True)
+  return render_template("index.html", nameIsvalid=True, ageIsvalid=True, genderIsvalid=True, sibsIsvalid=True, parsIsvalid=True, embarkedIsvalid=True, classIsvalid=True)
 
 def is_item_in_list(list, item):
 	if item in list:
@@ -86,7 +86,7 @@ def predict():
 		parsIsvalid = is_item_in_list(validation_keys, 'pars')
 		embarkedIsvalid = is_item_in_list(validation_keys, 'embarked')
 		classIsvalid = is_item_in_list(validation_keys, 'class')
-		return render_template("index2.html", nameIsvalid=nameIsvalid, ageIsvalid=ageIsvalid, genderIsvalid=genderIsvalid, sibsIsvalid=sibsIsvalid, parsIsvalid=parsIsvalid, embarkedIsvalid=embarkedIsvalid, classIsvalid=classIsvalid)
+		return render_template("index.html", nameIsvalid=nameIsvalid, ageIsvalid=ageIsvalid, genderIsvalid=genderIsvalid, sibsIsvalid=sibsIsvalid, parsIsvalid=parsIsvalid, embarkedIsvalid=embarkedIsvalid, classIsvalid=classIsvalid)
 
 	print("FORMDATA", form_data)
 
@@ -119,7 +119,7 @@ def predict():
 		status = "sad"
 		sad = True
 
-	return render_template("result2.html", result=result, color=color, message=message, good=good, meh=meh, sad=sad)
+	return render_template("result.html", result=result, color=color, message=message, good=good, meh=meh, sad=sad)
 
 if __name__ == "__main__":
 	app.run(debug=True)

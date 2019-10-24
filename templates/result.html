@@ -1,46 +1,63 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title>Titanic predictor</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-</head>
-<body style="background-color: {{color}};padding: 2em;">
-	
-	<div class="container">
-		<div class="jumbotron">
-      <h1>Chance of survival: {{result}}%</h1>
-			<h1>{{message}}</h1>
-
-
-		</div>
-		
-		{% if good %}
-		<div style="width:100%;height:0;padding-bottom:57%;position:relative;"><iframe src="https://giphy.com/embed/3oFzmiMu3v4LIXpJBK" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/congratulations-congrats-happy-for-you-3oFzmiMu3v4LIXpJBK">via GIPHY</a></p>
-		{% endif %}
-		{% if meh %}
-		<div style="width:100%;height:0;padding-bottom:75%;position:relative;"><iframe src="https://giphy.com/embed/9xijGdDIMovchalhxN" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/CulturaJubile-cultura-medium-9xijGdDIMovchalhxN">via GIPHY</a></p>
-		{% endif %}
-		{% if sad %}
-		<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/Ty9Sg8oHghPWg" width="50%" height="50%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/mrw-song-myself-Ty9Sg8oHghPWg">via GIPHY</a></p>
-		{% endif %}
-
-
-	</div>
-
-	<style>
-		.main {
-			background-color: {{color}};
-		}
-	</style>
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-
-		});
-	</script>
-</body>
+  <head>
+    <title>Titanic: Would you survive disaster?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <a href="/"><h1 class="title is-1">Titanic Survival Predictor</h1></a>
+        <h3 class="subtitle is-3">Would you have survived disaster?</h3>
+        <hr>
+        {% if good %}
+        <div class="message is-success">
+          <div class="message-header">
+            <p>Results</p>
+          </div>
+          <div class="message-body">
+            <h1 class="title is-3">Chance of survival: {{result}}%</h1>
+            <h1 class="subtitle is-5">{{message}}</h1>
+          </div>
+        </div>
+        {% endif %}
+        {% if meh %}
+        <div class="message is-warning">
+          <div class="message-header">
+            <p>Results</p>
+          </div>
+          <div class="message-body">
+            <h1 class="title is-3">Chance of survival: {{result}}%</h1>
+            <h1 class="subtitle is-5">{{message}}</h1>
+          </div>
+        </div>
+        {% endif %}
+        {% if sad %}
+        <div class="message is-danger">
+          <div class="message-header">
+            <p>Results</p>
+          </div>
+          <div class="message-body">
+            <h1 class="title is-3">Chance of survival: {{result}}%</h1>
+            <h1 class="subtitle is-5">{{message}}</h1>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Titanic Predictor</strong> by <a href="https://github.com/carlojacobs">Carlo Jacobs</a>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+      </div>
+    </footer>
+  </body>
+  <style>
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </html>

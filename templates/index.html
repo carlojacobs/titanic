@@ -1,54 +1,179 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title>Titanic predictor</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-</head>
-<body>
-	<div class="container mt-5 mb-5">
-		<h1>Would you survive disaster?</h1>
-		<h2>Do you have what it takes to make it out alive?</h2>
-		<div style="width:80%;height:0;padding-bottom:58%;position:relative;"><iframe src="https://giphy.com/embed/Uj3SeuVfg2oCs" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/titanic-Uj3SeuVfg2oCs">via GIPHY</a></p>
-		<h2>Fill in the form and find out!</h2>
-		<form action="http://127.0.0.1:5000/predict" method="POST">
-		  <div class="form-group">
-		    <label for="exampleInputEmail1">Name</label>
-		    <input name="name" type="text" class="form-control" placeholder="Name">
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Age</label>
-		    <input name="age" type="number" class="form-control" id="exampleInputPassword1" placeholder="Age">
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Gender</label> <br>
-		    <input type="radio" name="gender" value="0"> Male<br>
-				<input type="radio" name="gender" value="1"> Female
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Number of brothers and sisters</label>
-		    <input name="sibs" type="number" class="form-control" id="exampleInputPassword1" placeholder="Brothers and sisters">
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Number of parents</label>
-		    <input name="pars" type="number" class="form-control" id="exampleInputPassword1" placeholder="Parents">
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Embarked from port</label> <br>
-		    <input type="radio" name="embarked" value="0"> Cherbourg<br>
-				<input type="radio" name="embarked" value="1"> Southampton<br>
-				<input type="radio" name="embarked" value="2"> Queenstown
-		  </div>
-		  <div class="form-group">
-		    <label for="exampleInputPassword1">Class</label> <br>
-		    <input type="radio" name="class" value="1"> 1st ($30 000)<br>
-				<input type="radio" name="class" value="2"> 2nd ($1000)<br>
-				<input type="radio" name="class" value="3"> 3rd ($500)
-		  </div>
-		  <button type="submit" class="btn btn-primary">Submit</button>
-		</form>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</body>
+  <head>
+    <title>Titanic: Would you survive disaster?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <a href="/"><h1 class="title is-1">Titanic Survival Predictor</h1></a>
+        <h3 class="subtitle is-3">Would you have survived disaster?</h3>
+        <hr>
+        <div class="columns">
+          <div class="column">
+            <h4 class="title is-4">Fill in this form and find out!</h2>
+            <form action="http://127.0.0.1:5000/predict" method="POST" class="box">
+              <div class="field">
+                <label class="label">Name</label>
+                {% if nameIsvalid %}
+                <div class="control">
+                  <input class="input" type="text" placeholder="Name" name="name">
+                </div>
+                {% else %}
+                <div class="control">
+                  <input class="input is-danger" type="text" placeholder="Name" name="name">
+                </div>
+                <p class="help is-danger">Please fill in this field</p>
+                {% endif %}
+              </div>
+              <div class="field">
+                <label class="label">Age</label>
+                {% if ageIsvalid %}
+                <div class="control">
+                  <input class="input" type="number" placeholder="Age" name="age">
+                </div>
+                {% else %}
+                <div class="control">
+                  <input class="input is-danger" type="number" placeholder="Age" name="age">
+                </div>
+                <p class="help is-danger">Please fill in this field</p>
+                {% endif %}
+              </div>
+              <div class="field">
+                <label class="label">Gender</label>
+                <div class="control">
+                  {% if genderIsvalid %}
+                  <label class="radio">
+                    <input type="radio" name="gender" value="0" checked>
+                    Male
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="gender" value="1">
+                    Female
+                  </label>
+                  {% else %}
+                  <label class="radio">
+                    <input type="radio" name="gender" value="0" checked>
+                    Male
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="gender" value="1">
+                    Female
+                  </label>
+                  <p class="help is-danger">Please fill in this field</p>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Number of Siblings on Board</label>
+                <div class="control">
+                  {% if sibsIsvalid %}
+                  <input class="input" type="number" placeholder="Number of Siblings" name="sibs">
+                  {% else %}
+                  <input class="input is-danger" type="number" placeholder="Number of Siblings" name="sibs">
+                  <p class="help is-danger">Please fill in this field</p>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Number of Parents on Board</label>
+                <div class="control">
+                  {% if parsIsvalid %}
+                  <input class="input" type="number" placeholder="Number of Parents" name=pars>
+                  {% else %}
+                  <input class="input is-danger" type="number" placeholder="Number of Parents" name=pars>
+                  <p class="help is-danger">Please fill in this field</p>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Ebarked from Port</label>
+                {% if embarkedIsvalid %}
+                <div class="control">
+                  <div class="select">
+                    <select name="embarked">
+                      <option value="0">Cherbourg</option>
+                      <option value="1">Southampton</option>
+                      <option value="2">Queenstown</option>
+                    </select>
+                  </div>
+                </div>
+                {% else %}
+                <div class="control">
+                  <div class="select is-danger">
+                    <select name="embarked">
+                      <option value="0">Cherbourg</option>
+                      <option value="1">Southampton</option>
+                      <option value="2">Queenstown</option>
+                    </select>
+                  </div>
+                  <p class="help is-danger">Please fill in this field</p>
+                </div>
+                {% endif %}
+              </div>
+              <div class="field">
+                <label class="label">Class</label>
+                {% if classIsvalid %}
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" name="class" value="1" checked>
+                    1st
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="class" value="2">
+                    2nd
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="class" value="3">
+                    3rd
+                  </label>
+                </div>
+                {% else %}
+                <div class="control is-danger">
+                  <label class="radio">
+                    <input type="radio" name="class" value="1" checked>
+                    1st
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="class" value="2">
+                    2nd
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="class" value="3">
+                    3rd
+                  </label>
+                  <p class="help is-danger">Please fill in this field</p>
+                </div>
+                {% endif %}
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button type="submit" class="button is-link">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="column">
+            <h4 class="title is-4">What is this?</h4>
+            I developed this site using machine learning and <a href="https://www.kaggle.com/c/titanic">this</a> data set. It can accurately predict <i>your</i> hypothetical chance of surviving the titanic.
+            <h4 class="title is-4">What Happened?</h4>
+            <div class="content">
+              <p>RMS Titanic was a British passenger liner that sank in the North Atlantic Ocean in 1912, after colliding with an iceberg during her maiden voyage from Southampton to New York City. Of the estimated 2,224 passengers and crew aboard, more than 1,500 died, making it one of modern history's deadliest commercial marine disasters during peacetime. RMS Titanic was the largest ship afloat at the time she entered service and was the second of three Olympic-class ocean liners operated by the White Star Line. She was built by the Harland and Wolff shipyard in Belfast. Thomas Andrews, chief naval architect of the shipyard at the time, died in the disaster</p>
+              <a href="https://en.wikipedia.org/wiki/Sinking_of_the_RMS_Titanic" class="button is-info">More</a>
+              <br>
+              <iframe src="https://giphy.com/embed/qXAkeaeRMPt16" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Titanic Predictor</strong> by <a href="https://github.com/carlojacobs">Carlo Jacobs</a>. The source code is licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
